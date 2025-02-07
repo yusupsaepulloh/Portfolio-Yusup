@@ -1,0 +1,286 @@
+/* Custom styles to complement Bootstrap */
+:root {
+    scroll-behavior: smooth;
+}
+
+/* Theme variables and transitions */
+:root[data-bs-theme] {
+    transition: all 0.3s ease;
+}
+
+:root[data-bs-theme="light"] {
+    --custom-bg: #ffffff;
+    --custom-text: #212529;
+    --custom-card-bg: #f8f9fa;
+    --custom-border: rgba(0, 0, 0, 0.125);
+    --custom-shadow: rgba(0, 0, 0, 0.1);
+    --hero-text: #000000;
+    --hero-overlay: rgba(255, 255, 255, 0.85);
+    --about-overlay: rgba(255, 255, 255, 0.9);
+    --section-heading: #000000;
+    --muted-text: #6c757d;
+    --link-color: #0d6efd;
+}
+
+:root[data-bs-theme="dark"] {
+    --custom-bg: #212529;
+    --custom-text: #f8f9fa;
+    --custom-card-bg: #343a40;
+    --custom-border: rgba(255, 255, 255, 0.125);
+    --custom-shadow: rgba(0, 0, 0, 0.25);
+    --hero-text: #ffffff;
+    --hero-overlay: rgba(0, 0, 0, 0.7);
+    --about-overlay: rgba(0, 0, 0, 0.8);
+    --section-heading: #ffffff;
+    --muted-text: #adb5bd;
+    --link-color: #6ea8fe;
+}
+
+/* Theme toggle button styles */
+#theme-toggle {
+    padding: 0;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: absolute;
+}
+
+.theme-icon-dark {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-icon-light {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+[data-bs-theme="light"] .theme-icon-dark {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+[data-bs-theme="light"] .theme-icon-light {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Theme-aware styles */
+body {
+    background-color: var(--custom-bg);
+    color: var(--custom-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--section-heading);
+}
+
+.text-muted {
+    color: var(--muted-text) !important;
+}
+
+a {
+    color: var(--link-color);
+}
+
+.card {
+    background-color: var(--custom-card-bg);
+    border-color: var(--custom-border);
+}
+
+.progress {
+    background-color: var(--custom-border);
+}
+
+/* Hero section with theme-aware overlay and text */
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+                url('../img/bg/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--hero-text);
+}
+
+.hero-section h1,
+.hero-section .lead {
+    color: var(--hero-text);
+}
+
+.hero-section .btn-outline-light {
+    color: var(--hero-text);
+    border-color: var(--hero-text);
+}
+
+[data-bs-theme="light"] .hero-section .btn-outline-light:hover {
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+}
+
+/* About section with theme-aware overlay and text */
+.about-section {
+    background: linear-gradient(var(--about-overlay), var(--about-overlay)),
+                url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40');
+    background-size: cover;
+    background-position: center;
+    color: var(--custom-text);
+}
+
+.about-section h2,
+.about-section h3,
+.about-section h4,
+.about-section p {
+    color: var(--custom-text);
+}
+
+/* Project cards with theme awareness */
+.project-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    background-color: var(--custom-card-bg);
+    border-color: var(--custom-border);
+}
+
+.project-card .card-title,
+.project-card .card-text {
+    color: var(--custom-text);
+}
+
+.project-card .btn-outline-primary {
+    color: var(--link-color);
+    border-color: var(--link-color);
+}
+
+.project-card .btn-outline-primary:hover {
+    color: var(--custom-bg);
+    background-color: var(--link-color);
+    border-color: var(--link-color);
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: var(--bs-card-border-radius);
+    box-shadow: 0 5px 15px var(--custom-shadow);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+/* Certificate cards with theme awareness */
+.certificate-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: var(--custom-card-bg);
+    border-color: var(--custom-border);
+}
+
+.certificate-card .card-title,
+.certificate-card .card-text {
+    color: var(--custom-text);
+}
+
+.certificate-card .text-muted {
+    color: var(--muted-text) !important;
+}
+
+.certificate-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px var(--custom-shadow);
+}
+
+/* Contact section with theme awareness */
+#contact a {
+    color: var(--link-color);
+}
+
+/* Social icons with theme awareness */
+.social-icon {
+    transition: all 0.3s ease;
+    position: relative;
+    color: var(--custom-text) !important;
+}
+
+.social-icon:hover {
+    color: var(--link-color) !important;
+    transform: translateY(-3px);
+}
+
+.social-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--link-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover::after {
+    transform: scaleX(1);
+}
+
+/* Navbar styles with theme awareness */
+.navbar-scrolled {
+    background-color: var(--custom-bg) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--custom-border);
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--custom-text) !important;
+}
+
+.navbar {
+    transition: all 0.3s ease;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+/* Progress bar animation */
+.progress-bar {
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+.progress-bar.animated {
+    animation: progressAnimation 1.5s ease-in-out forwards;
+}
+
+@keyframes progressAnimation {
+    from { width: 0; }
+    to { width: var(--target-width); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .hero-section {
+        background-attachment: scroll;
+    }
+}
